@@ -1,4 +1,4 @@
-package com.itwill01.method;
+package com.itwill02.comstructor;
 
 public class StudentConstructorMain {
 
