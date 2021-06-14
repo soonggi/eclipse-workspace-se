@@ -8,13 +8,13 @@ public class ReferenceTypeArrayAccountMain {
 		Account[] accounts = {
 				acc1,
 				new Account(2222, "PRQ", 10000, 0.9),
-				new Account(3333, "WRQ", 20000, 0.7),
-				new Account(4444, "ERQ", 30000, 2.9),
-				new Account(5555, "RRQ", 40000, 5.9),
+				new Account(1255, "WRQ", 20000, 0.7),
+				new Account(8675, "ERQ", 30000, 2.9),
+				new Account(2321, "RRQ", 40000, 5.9),
 				new Account(6666, "TRQ", 50000, 1.9),
-				new Account(7777, "YRQ", 60000, 8.9),
-				new Account(8888, "URQ", 70000, 6.7),
-				new Account(9999, "IRQ", 80000, 5.8),
+				new Account(1124, "YRQ", 60000, 8.9),
+				new Account(3232, "URQ", 70000, 6.7),
+				new Account(7897, "IRQ", 80000, 5.8),
 		
 		};
 		
@@ -95,12 +95,21 @@ public class ReferenceTypeArrayAccountMain {
 			accounts[i].print();
 		}
 		
-		/*
+		
 		System.out.println("10. 계좌번호순으로 오름(내림)차순정렬");
 
-		for (int j = 0; j < accounts.length-1; j++) {
+		for (int i = 0; i < accounts.length; i++) {
+			for (int j = 0; j < accounts.length-1; j++) {
+				if(accounts[j].getNo() > accounts[j+1].getNo()) {
+					Account temGetno = accounts[j];
+					accounts[j] = accounts[j+1];
+					accounts[j+1] = temGetno;
+				}
+				
+			}
+		}for (int i = 0; i < accounts.length; i++) {
+			accounts[i].print();
 		}
-		*/
 		
 		
 		

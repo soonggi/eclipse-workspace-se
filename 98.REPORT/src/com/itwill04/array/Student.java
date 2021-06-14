@@ -31,7 +31,6 @@ public class Student { // 멤버필드 선언
 		this.math=math;
 		
 	}
-	
 
 	/*
 	멤버메쏘드 선언
@@ -52,9 +51,11 @@ public class Student { // 멤버필드 선언
 	public void avgData() { // 평균 데이터 메소드 설정
 		this.avg=(int)((this.sum)/3.0*100)/100.0;
 	}
+	/*
 	public void rankData(int rank) {
 		this.rank=rank;
 	}
+	*/
 	
 	public void grade() { // 평점 데이터 메소드 설정
 		
@@ -71,7 +72,7 @@ public class Student { // 멤버필드 선언
 		}
 	}
 	
-	public void headerPrint() { // 출력 메소드 설정
+	public static void headerPrint() { // 출력 메소드 설정
 		
 		System.out.println("----------------------------------------------------------------------");
 		System.out.println("번호"+"\t"+"이름"+"\t"+"국어"+"\t"+"영어"+"\t"+"수학"+"\t"+"총점"+"\t"+"평균"+"\t"+"평점"+"\t"+"석차");

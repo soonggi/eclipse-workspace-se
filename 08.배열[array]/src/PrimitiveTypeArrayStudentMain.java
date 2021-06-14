@@ -35,11 +35,7 @@ public class PrimitiveTypeArrayStudentMain {
 				gradeArray[i] = 'F';
 		}
 		/*
-		 * [Quiz] 석차 계산
-		 */
-		
-		/*
-		 * 0번 학생 석차 계산
+		 * 석차계산
 		 */
 		for(int i=0; i<noArray.length; i++) {
 			for(int j=0; j<noArray.length; j++) {
