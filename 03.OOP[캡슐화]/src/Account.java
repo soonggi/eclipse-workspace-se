@@ -1,4 +1,8 @@
-
+/**
+ * 계좌객체를 생성하기위한 클래스
+ * @author 황순근
+ *
+ */
 public class Account {
 	/*
 	 * 멤버필드
@@ -12,6 +16,13 @@ public class Account {
 	 * 멤버메쏘드
 	 */
 	//계좌 데이터를 set하는 메쏘드
+	/**
+	 * 계좌 데이터를 설정하는 메쏘드
+	 * @param no 계좌번호
+	 * @param owner 계좌주
+	 * @param balance 잔고
+	 * @param iyul 이율
+	 */
 	public void setAccountData(int no, String owner, int balance, double iyul) {
 		this.no=no;
 		this.owner=owner;
@@ -19,6 +30,10 @@ public class Account {
 		this.iyul=iyul;
 	}
 	//입금
+	/**
+	 * 계좌입금
+	 * @param m 입금할 금액
+	 */
 	public void deposit(int m) {
 		this.balance+=m;
 	}
@@ -34,12 +49,19 @@ public class Account {
 		System.out.printf("%s%n","--------------------------------");
 	
 	}
+	/**
+	 * 계좌 객체의 정보 출력
+	 */
 	public void print() {
 		
 		System.out.printf("%d %s %d %4.1f %n",this.no,this.owner,this.balance,this.iyul);
 	}
 	
 	// getter method
+	/**
+	 * 
+	 * @return 계좌 잔고
+	 */
 	public int getBalance() {
 		return this.balance;
 	}

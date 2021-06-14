@@ -23,6 +23,13 @@
 	 *        	  	
 	 *            }
 	 */
+/**
+ * 이 클래스는 주차장에서 차객체를 생성하기위한 클래스입니다.
+ * @author 황순근
+ * @version 0.1
+ * @since 2021
+ *
+ */
 
 public class Car {
 	/*
@@ -32,6 +39,9 @@ public class Car {
 	 */
 	
 	//1.멤버필드(변수)(속성)
+	/**
+	 * 차량번호 저장 필드
+	 */
 	public String no;//차량번호
 	public int inTime;//입차시간
 	public int outTime;//출차시간
