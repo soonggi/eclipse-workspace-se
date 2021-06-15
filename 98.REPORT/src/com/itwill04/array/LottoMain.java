@@ -15,6 +15,7 @@ public class LottoMain {
 		}
 		
 		System.out.println();
+		
 
 	}
 
