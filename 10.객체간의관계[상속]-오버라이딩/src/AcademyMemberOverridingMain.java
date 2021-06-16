@@ -1,5 +1,5 @@
 
-public class AcademyMemberMain {
+public class AcademyMemberOverridingMain {
 
 	public static void main(String[] args) {
 		AcademyStudent st1 = new AcademyStudent(1, "KIM", "LINUX");
@@ -19,16 +19,15 @@ public class AcademyMemberMain {
 		 */
 		
 		System.out.println("--------------Student----------------");
-		st1.studentPrint();
-		//st1.print();
-		st2.studentPrint();
-		st3.studentPrint();
+		st1.print();
+		st2.print();
+		st3.print();
 		System.out.println("--------------Gangsa----------------");
-		gs1.gangsaPrint();
-		gs2.gangsaPrint();
+		gs1.Print();
+		gs2.Print();
 		System.out.println("--------------Staff----------------");
-		sf1.staffPrint();
-		sf2.staffPrint();
+		sf1.Print();
+		sf2.Print();
 
 	}
 
