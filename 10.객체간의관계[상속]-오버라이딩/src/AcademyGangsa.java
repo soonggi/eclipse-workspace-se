@@ -5,8 +5,9 @@ public class AcademyGangsa extends AcademyMember {
 		
 	}
 	public AcademyGangsa(int no, String name, String subject) {
-		this.no = no;
-		this.name = name;
+		super();
+		this.setNo(no); // super 안쓰고 이런식으로 해도 됨
+		this.setName(name);
 		this.subject = subject;
 	}
 	public String getSubject() {
@@ -16,7 +17,7 @@ public class AcademyGangsa extends AcademyMember {
 		this.subject = subject;
 	}
 	
-	public void Print() {
+	public void print() {
 		super.print();
 		System.out.println(this.subject);
 	}

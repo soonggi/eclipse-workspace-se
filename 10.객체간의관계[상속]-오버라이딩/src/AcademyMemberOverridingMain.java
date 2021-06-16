@@ -23,11 +23,11 @@ public class AcademyMemberOverridingMain {
 		st2.print();
 		st3.print();
 		System.out.println("--------------Gangsa----------------");
-		gs1.Print();
-		gs2.Print();
+		gs1.print();
+		gs2.print();
 		System.out.println("--------------Staff----------------");
-		sf1.Print();
-		sf2.Print();
+		sf1.print();
+		sf2.print();
 
 	}
 

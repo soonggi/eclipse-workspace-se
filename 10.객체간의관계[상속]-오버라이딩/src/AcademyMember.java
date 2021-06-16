@@ -1,6 +1,6 @@
 public class AcademyMember {
-	public int no;
-	public String name;
+	private int no;
+	private String name;
 	public AcademyMember() {
 		
 	}

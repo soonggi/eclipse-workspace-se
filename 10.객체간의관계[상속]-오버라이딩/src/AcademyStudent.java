@@ -33,8 +33,7 @@ public class AcademyStudent extends AcademyMember {
 		
 	}
 	public AcademyStudent(int no, String name, String ban) {
-		this.no=no;
-		this.name=name;
+		super(no, name); // 캡슐화 되어있는 변수 호출
 		this.ban=ban;
 	}
 	public String getBan() {

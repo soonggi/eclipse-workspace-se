@@ -1,8 +1,8 @@
 public class AcademyStaff extends AcademyMember {
 	public String depart; // 부서
 	public AcademyStaff() {
-		// TODO Auto-generated constructor stub
 	}
+	
 	public AcademyStaff(int no, String name, String depart) {
 		super(no, name); // 캡슐화 되어있는 변수 호출
 		this.depart = depart;
@@ -14,7 +14,7 @@ public class AcademyStaff extends AcademyMember {
 		this.depart = depart;
 	}
 	 
-	public void Print() {
+	public void print() {
 		super.print();
 		System.out.println(this.depart);
 	}
