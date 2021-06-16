@@ -42,6 +42,9 @@ public class Car {
 	/*
 	 * 출차시간 셋팅
 	 */
+	
+	
+	
 	public void setOutTime(int outTime) {
 		this.outTime=outTime;
 		
@@ -51,6 +54,11 @@ public class Car {
 	 * 입차 데이타(차량번호, 입차시간) 셋팅
 	 */
 	
+	@Override
+	public String toString() {
+		return "Car [no=" + no + ", inTime=" + inTime + ", outTime=" + outTime + ", fee=" + fee + "]";
+	}
+
 	public void setIpChaDate(String no, int inTime) {
 		this.no=no;
 		this.inTime=inTime;

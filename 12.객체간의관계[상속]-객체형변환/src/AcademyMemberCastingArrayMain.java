@@ -17,6 +17,30 @@ public class AcademyMemberCastingArrayMain {
 		for (int i = 0; i < members.length; i++) {
 			members[i].print();
 		}
+		
+		System.out.println("---------------instanceof--------------------");
+		/*
+		 * 연산자 --> instanceof
+		 *   - 형태 : 참조변수 instanceof 클래스 이름
+		 *   - 연산결과 : true or false
+		 */
+		AcademyMember am = new AcademyStudent(1, "김", "자바");
+		
+		boolean isStudent = am instanceof AcademyStudent;
+		if(isStudent) {
+			System.out.println("학생객체 -->" + am);
+			AcademyStudent tempStudent = (AcademyStudent)am;
+			System.out.println("학생 반 -->" + tempStudent.getBan());
+		}
+		
+		System.out.println("---------------AcademyMember중에서 AcademyStudent객체만 출력------------------");
+		for (int i = 0; i < members.length; i++) {
+			if(members[i] instanceof AcademyStudent) {
+				members[i].print();
+				AcademyStudent tempStudent = (AcademyStudent)members[i];
+				System.out.println("  >>학생 반 :"+tempStudent.getBan());
+			}
+		}
 
 	}
 

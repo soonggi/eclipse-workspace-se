@@ -57,6 +57,11 @@ public class Account {
 		System.out.printf("%d %s %d %4.1f %n",this.no,this.owner,this.balance,this.iyul);
 	}
 	
+	
+	@Override
+	public String toString() {
+		return this.no+"\t"+this.owner+"\t"+this.balance+"\t"+this.iyul;
+	}
 	// getter method
 	/**
 	 * 
