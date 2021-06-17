@@ -27,10 +27,7 @@ class Parent{
 		System.out.println("Parent.method3()");
 	}
 	public void method4() {
-		
-	}
-	public void method5() {
-		
+		System.out.println("Parent.method4()");
 	}
 	
 }
@@ -78,8 +75,8 @@ public class ParentChildTypeCastingMain {
 		/*
 		 * << compile error >>
 		 * Type mismatch: cannot convert from Parent to Child
-		 * Child c2 = p2;
 		 */
+		 
 		
 		/*
 		 * 강제형변환 시 compile은 가능하나 실행 시 예외 발생
@@ -95,13 +92,14 @@ public class ParentChildTypeCastingMain {
 		Child c3 = (Child)p3;
 		
 		
+		
 		System.out.println("-------------재정의--------------");
 		Parent p4 = new Child();
 		p4.method1();
 		p4.method2();
-		p4.method3(); 
-		p4.method4(); // 재정의된 메쏘드는 호출 가능 Child.method4()
-		p4.method5();
+		p4.method3();
+		p4.method4();//재정의된메쏘드 호출가능
+		//p4.method5();
 
 	}
 

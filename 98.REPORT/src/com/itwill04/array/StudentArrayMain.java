@@ -150,6 +150,25 @@ public class StudentArrayMain {
 			
 		}
 		
-	}
+		
 
+		/*
+		 8.이름이 KIM인학생들 출력
+		 */
+		System.out.println(" 8.이름이 KIM인학생들 출력");
+		
+		
+		
+		
+		/*
+		 9. 학생이름순으로 오름차순정렬
+		 */
+		
+		
+		System.out.println(" 9.학생이름순으로 오름차순정렬");
+		
+
+	
 }
+}
+

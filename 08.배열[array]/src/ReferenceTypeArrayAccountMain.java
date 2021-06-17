@@ -9,9 +9,9 @@ public class ReferenceTypeArrayAccountMain {
 				acc1,
 				new Account(2222, "PRQ", 10000, 0.9),
 				new Account(1255, "WRQ", 20000, 0.7),
-				new Account(8675, "ERQ", 30000, 2.9),
-				new Account(2321, "RRQ", 40000, 5.9),
-				new Account(6666, "TRQ", 50000, 1.9),
+				new Account(8675, "KIM", 30000, 2.9),
+				new Account(2321, "KIM", 40000, 5.9),
+				new Account(6666, "KIM", 50000, 1.9),
 				new Account(1124, "YRQ", 60000, 8.9),
 				new Account(3232, "URQ", 70000, 6.7),
 				new Account(7897, "IRQ", 80000, 5.8),
@@ -56,6 +56,12 @@ public class ReferenceTypeArrayAccountMain {
 		System.out.println("6. 은행 계좌들 중에서 계좌이율 2.0 이상인 계좌 여러개 찾아서 출력");
 		for (int i = 0; i < accounts.length; i++) {
 			if(accounts[i].getIyul()>=2.0) {
+				accounts[i].print();
+			}
+		}
+		System.out.println("6. 은행 계좌들 중에서 이름이 KIM인 계좌 여러개 찾아서 출력");
+		for (int i = 0; i < accounts.length; i++) {
+			if(accounts[i].getOwner().equals("KIM")) {
 				accounts[i].print();
 			}
 		}
@@ -111,6 +117,22 @@ public class ReferenceTypeArrayAccountMain {
 			accounts[i].print();
 		}
 		
+		System.out.println("10. 이름순으로 오름(내림)차순정렬");
+		for (int i = 0; i < accounts.length-1; i++) {
+			boolean isSwap=false; // 정렬 횟수 줄이는 방법
+			for (int j = 0; j < accounts.length-1-i; j++) {
+				if(accounts[j].getOwner().compareTo(accounts[j+1].getOwner())>0) {
+					Account tempAccount = accounts[j+1];
+					accounts[j+1]=accounts[j];
+					accounts[j]=tempAccount;
+					isSwap=true;
+				}
+			}
+			if(!isSwap) {
+				break;
+			}
+		}
+			
 		
 		
 		System.out.println("11. 5555계좌 한개 이율을 3.6으로 변경");
@@ -131,6 +153,10 @@ public class ReferenceTypeArrayAccountMain {
 				accounts[i].print();
 			}
 			
+		}
+		Account.headerPrint();
+		for (int i = 0; i < accounts.length; i++) {
+			accounts[i].print();
 		}
 	}
 
