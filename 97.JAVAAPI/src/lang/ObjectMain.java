@@ -19,6 +19,7 @@ public class ObjectMain {
 			Returns:
 					a string representation of the object.
 		 */
+		
 		String str1=o1.toString();
 		//String str2=o2.toString();
 		System.out.println(str1);
