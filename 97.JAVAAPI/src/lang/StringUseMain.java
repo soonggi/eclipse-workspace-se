@@ -24,6 +24,8 @@ public class StringUseMain {
 			System.out.println("아이디를 입력하세요!!!");
 		}
 		
+		
+		
 		System.out.println("---------String.substring----------");
 		System.out.println("Have a nice day!!!".substring(7));
 		System.out.println("Have a nice day!!!".substring(7,11));
@@ -36,6 +38,7 @@ public class StringUseMain {
 		char firstChar=userId.charAt(0);
 		System.out.println("'1' 이라는 문자--> " + firstChar);
 		System.out.println("'1'의 asciicode값--> " + (int)firstChar);
+		
 		for (int i = 0; i < userId.length(); i++) {
 			char tempChar = userId.charAt(i);
 			System.out.print(tempChar+"("+(int)tempChar+")");
@@ -58,20 +61,30 @@ public class StringUseMain {
 		 *    - 영문,숫자로만이루어져 있어야한다.
 		 *    - 첫글자가 숫자여서는안된다
 		 */
-		String[] idArray= {"guard","7up","test"," dfdj","my id","%super%","아이디","aaaaaaaaaaaa","c"};
+		String[] idArray= {"guard","7up","test","df2dj","my7id","%super%","아이디","aaaaaaaaaaaa","c"};
 		
 		for (int i = 0; i < idArray.length; i++) {
-			if(idArray[i].length()>=4 && idArray[i].length()<=8) {
-				System.out.println(idArray[i]);
+			if(idArray[i].length()>=3 && idArray[i].length()<=7) {
+				if(idArray[i].charAt(0)>57){
+					for (int j = 0; j < idArray[i].length(); j++) {
+						boolean isLowChar = (idArray[i].charAt(j)>='a' && idArray[i].charAt(j)<='z');
+						boolean numChar = (idArray[i].charAt(j)>=48 && idArray[i].charAt(j)<=57);
+						if((isLowChar || numChar)){
+							System.out.printf("%s \n", idArray[i]);
+							break;
+				}
+					}
+				}
 			}
 		}
+		
 		
 		
 		System.out.println("-----------String.split()-----------");
 		
 		String cardNo="2345-3434-243451";
 		String ssn="212121-445484";
-		String nameList="김경호, 신명숙, 이은희, 정봉화, 신명숙";
+		String nameList=" 김경호, 신명숙, 이은희, 정봉화, 신명숙";
 		
 		String[] cardNoArray=cardNo.split("-");
 		String[] ssnArray=ssn.split("-");

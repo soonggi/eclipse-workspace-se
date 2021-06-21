@@ -2,6 +2,7 @@
 public class AMain {
 
 	public static void main(String[] args) {
+		/*
 		A A = new A();
 		
 		A.a=11;
@@ -12,6 +13,19 @@ public class AMain {
 		
 		System.out.println(Math.random());
 		System.out.println((Math.random()*45)+1);
+		*/
+		
+		String s;
+		
+		String str = null;
+		s = str;
+		
+		//String result = s.concat("100"); // NullPotinerException
+		
+		"abc".equals(s);
+		
+		//s.equals("abc"); // NullPotinerException
+		
 
 	}
 
