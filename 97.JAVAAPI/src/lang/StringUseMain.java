@@ -120,6 +120,7 @@ public class StringUseMain {
 		String fileName="xxx.gif";
 		int dotIndex = fileName.indexOf(".");
 		System.out.println("dotIndex:"+dotIndex);
+		
 		String fileNameNoExt=fileName.substring(0, dotIndex);
 		String fileExt = fileName.substring(dotIndex+1);
 		System.out.println(fileNameNoExt+"  "+fileExt);
@@ -127,8 +128,8 @@ public class StringUseMain {
 		System.out.println(copyFileName);
 		
 		System.out.println("-----------String.startWith,endWith-----------");
-		String fileName2="yyy.jpg";
-		if(fileName2.endsWith("gif")||fileName2.endsWith(".jpg")||fileName2.endsWith(".jpeg")) {
+		String fileName2="yyy.gif";
+		if(fileName2.endsWith(".gif")||fileName2.endsWith(".jpg")||fileName2.endsWith(".jpeg")) {
 			System.out.println(fileName2+"는 이미지 파일 입니다.");
 		}
 		String[] names = {"김경호","이경호","김미선","이미숙","홍수환","김현미"};

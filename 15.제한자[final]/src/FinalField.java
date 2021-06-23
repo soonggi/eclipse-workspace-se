@@ -16,7 +16,6 @@
 public class FinalField {
 	public final int PORT_NUMBER = 80;
 	public final double INCETIVE_RATE;
-	
 	public final static int NORTH = 0; // final과 static은 같이 사용한다.
 	public final static int SOUTH = 1;
 	public final static int EAST = 2;
@@ -44,6 +43,7 @@ public class FinalField {
 		System.out.println(FinalField.SOUTH);
 		System.out.println(FinalField.NORTH);
 	}
+	
 	public void move(int direction) {
 		switch (direction) {
 		case FinalField.NORTH:
