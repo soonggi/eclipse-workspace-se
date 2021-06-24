@@ -3,6 +3,11 @@ package com.itwill05.service.account;
 public class AccountServiceReturnMain {
 	public static void main(String[] args) {
 		AccountServiceReturn accountServiceReturn = new AccountServiceReturn();
+		
+		System.out.println("0.AccountServiceReturn객체야 은행계좌 객체 인자로 줄게 추가해줘");
+		accountServiceReturn.addAccount(0000, "JANG", 10000, 1.0);
+		accountServiceReturn.addAccount(new Account(1234, "WWNG", 17700, 1.6));
+		
 		System.out.println("1.AccountServiceReturn객체야 은행계좌 총계좌수를 반환해줘");
 		int totAccountNumber=accountServiceReturn.getTotAccountNumber();
 		System.out.println(">>은행총계좌수:"+totAccountNumber);
@@ -46,6 +51,8 @@ public class AccountServiceReturnMain {
 		//System.out.println("13.AccountServiceReturn야 계좌데이타줄께 이름,잔고,이율 수정(update)해줘");
 		
 		System.out.println("14.AccountServiceReturn객체야 계좌번호줄께 계좌삭제한후 삭제한계좌객체반환해줘[OPTION]");
+		accountServiceReturn.deleteByNo(1111);
+
 		
 	}
 

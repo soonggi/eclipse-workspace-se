@@ -74,28 +74,47 @@ public class AccountServiceReturn {
 	/*
 	 * 4.계좌번호를 인자로받아서 계좌객체주소 한개반환
 	 */
+	/*
+	 * public Account findByNo(int no) { 
+	 * Account[] findAccount = new Account[1]; for
+	 * (int i = 0; i < accounts.length; i++) { if (accounts[i].getNo() == no) {
+	 * findAccount[0] = accounts[i]; }
+	 * 
+	 * } return findAccount[0]; }
+	 */
 	public Account findByNo(int no) {
-		Account[] findAccount = new Account[1];
+		Account findAccount = null;
 		for (int i = 0; i < accounts.length; i++) {
-			if (accounts[i].getNo() == no) {
-				findAccount[0] = accounts[i];
+			if(accounts[i].getNo()==no) {
+				findAccount=accounts[i];
+				break;
 			}
-
 		}
-		return findAccount[0];
+		return findAccount;
 	}
+	
 
 	/*
 	 * 5.계좌잔고 인자로받아서 잔고이상인 계좌배열객체 참조변수반환
 	 */
 	public Account[] findByBalance(int balance) {
-		Account[] findAccounts = new Account[accounts.length];
+		Account[] findAccounts = null;
+		
+		int count = 0;
 		for (int i = 0; i < accounts.length; i++) {
-			if (accounts[i].getBalance() >= balance) {
-				findAccounts[i] = accounts[i];
-				findAccounts[i].print();
+			if(accounts[i].getBalance()>=balance) {
+				count++;
 			}
 		}
+		findAccounts = new Account[count];
+		
+		for (int i = 0, Index=0; i < accounts.length; i++) {
+			if(accounts[i].getBalance()>=balance) {
+				findAccounts[Index] = accounts[i];
+				Index++;
+			}
+		}
+		
 
 		/*
 		 * A. 만족하는 객체의갯수구하기 - 예를들어 3개라면
@@ -128,14 +147,41 @@ public class AccountServiceReturn {
 	/*
 	 * 7.계좌주이름 인자로받아서 이름과일치하는계좌들배열객체 참조변수반환
 	 */
+
+	/*
+	 * 순근 버젼 public Account[] findByName(String name) { Account[] findAccounts = new
+	 * Account[accounts.length]; for (int i = 0; i < accounts.length; i++) { if
+	 * (accounts[i].getOwner().equals(name)) { findAccounts[i] = accounts[i];
+	 * findAccounts[i].print(); }
+	 * 
+	 * } return findAccounts; }
+	 */
+
 	public Account[] findByName(String name) {
-		Account[] findAccounts = new Account[accounts.length];
+		/*
+		 * A. 만족하는 객체의갯수구하기 - 예를들어 3개라면
+		 */
+		Account[] findAccounts = null;
+		int count = 0;
 		for (int i = 0; i < accounts.length; i++) {
 			if (accounts[i].getOwner().equals(name)) {
-				findAccounts[i] = accounts[i];
-				findAccounts[i].print();
+				count++;
 			}
+		}
+		/*
+		 * B. Account객체배열생성 - findAccounts=new Account[3];
+		 */
+		findAccounts = new Account[count];
 
+		/*
+		 * C. 만족하는Account객체들 Account배열에담기
+		 */
+		int index = 0;
+		for (int i = 0; i < accounts.length; i++) {
+			if (accounts[i].getOwner().equals(name)) {
+				findAccounts[index] = accounts[i];
+				index++;
+			}
 		}
 		return findAccounts;
 	}
@@ -145,7 +191,7 @@ public class AccountServiceReturn {
 	 */
 	public Account ipGum(int no, int m) {
 		/*
-		 * 1.계좌번호로 계좌찾기 2.입금
+		 * 1.계좌번호로 계좌찾기 2.입금 3.입금계좌 참조변수반환
 		 */
 		Account findAccount = this.findByNo(no);
 		findAccount.deposit(m);
@@ -197,9 +243,8 @@ public class AccountServiceReturn {
 				}
 			}
 			break;
-		
 
-			// if(irum1.compareTo(irum2)>0)
+		// if(irum1.compareTo(irum2)>0)
 		case (NAME):
 			if (order == ASCEND) {
 				for (int i = 0; i < accounts.length - 1; i++) {
@@ -211,7 +256,7 @@ public class AccountServiceReturn {
 						}
 					}
 				}
-			}else if (order == DESCEND) {
+			} else if (order == DESCEND) {
 				for (int i = 0; i < accounts.length - 1; i++) {
 					for (int j = 0; j < accounts.length - 1; j++) {
 						if (accounts[j].getOwner().compareTo(accounts[j + 1].getOwner()) < 0) {
@@ -221,7 +266,7 @@ public class AccountServiceReturn {
 						}
 					}
 				}
-				
+
 			}
 			break;
 		case (BALANCE):
@@ -235,7 +280,7 @@ public class AccountServiceReturn {
 						}
 					}
 				}
-			}else if(order == DESCEND) {
+			} else if (order == DESCEND) {
 				for (int i = 0; i < accounts.length - 1; i++) {
 					for (int j = 0; j < accounts.length - 1; j++) {
 						if (accounts[j].getBalance() < accounts[j + 1].getBalance()) {
@@ -258,7 +303,7 @@ public class AccountServiceReturn {
 						}
 					}
 				}
-			}else if(order == DESCEND) {
+			} else if (order == DESCEND) {
 				for (int i = 0; i < accounts.length - 1; i++) {
 					for (int j = 0; j < accounts.length - 1; j++) {
 						if (accounts[j].getIyul() < accounts[j + 1].getIyul()) {
@@ -307,11 +352,20 @@ public class AccountServiceReturn {
 	public Account deleteByNo(int no) {
 		Account deleteAccount = null;
 		for (int i = 0; i < accounts.length; i++) {
-			if(accounts[i].getNo()==no) {
-				accounts[i]=null;
-				deleteAccount=accounts[i];
+			if (accounts[i].getNo() == no) {
+				deleteAccount = accounts[i];
+				accounts[i] = null;
+				break;
 			}
 		}
+		Account[] temp = new Account[accounts.length - 1];
+		for (int i = 0, j = 0; i < accounts.length; i++) {
+			if (accounts[i] != null) {
+				temp[j] = accounts[i];
+				j++;
+			}
+		}
+		this.accounts = temp;
 
 		return deleteAccount;
 	}
