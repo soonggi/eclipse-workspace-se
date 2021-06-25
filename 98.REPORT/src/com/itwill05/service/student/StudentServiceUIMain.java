@@ -36,6 +36,8 @@ public class StudentServiceUIMain {
 				studentService.print();
 			}else if(menuNo==2) {
 				//2. 전체학생 총점으로 석차계산
+				studentService.calculateRank();
+				studentService.print();
 			}else if(menuNo==3) {
 				//3. 번호로   검색
 				System.out.print(" >>번호입력: ");
@@ -52,6 +54,11 @@ public class StudentServiceUIMain {
 				System.out.print(" >>학점입력: ");
 				String gradeStr = scanner.next();
 				char grade = gradeStr.charAt(0);
+				Student[] findStudents = studentService.findBygrade(grade);
+				for (int j = 0; j < findStudents.length; j++) {
+					
+					findStudents[j].print();
+				}
 				
 			}else if(menuNo==5) {
 				//5. 이름으로 검색

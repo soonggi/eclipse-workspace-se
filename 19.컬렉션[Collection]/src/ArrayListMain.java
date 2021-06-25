@@ -14,22 +14,9 @@ public class ArrayListMain {
 		Account acc4=new Account(4444, "CING", 12000, 2.9);
 		Account acc5=new Account(5555, "RING", 99000, 9.9);
 		
-		anyTypeArray[0]=acc1;
-		anyTypeArray[1]=acc2;
-		anyTypeArray[2]=acc3;
-		anyTypeArray[3]=acc4;
-		anyTypeArray[4]=acc5;
-		
-		
-		for (int i = 0; i < anyTypeArray.length; i++) {
-			Account tempAccount=(Account)anyTypeArray[i];
-			tempAccount.print();
-		}
-		
-		System.out.println("------------------------------------------");
 		ArrayList accountList=new ArrayList(); // 배열 사이즈 설정 없음
 		System.out.println("# size:"+accountList.size());
-		System.out.println("********************** 1.acc **********************");
+		System.out.println("********************** 1.add **********************");
 		accountList.add(acc1); //add() 사용하면 사이즈가 증가함
 		accountList.add(acc2);
 		accountList.add(acc3);
@@ -37,18 +24,22 @@ public class ArrayListMain {
 		accountList.add(acc5);
 		System.out.println("# size:"+accountList.size());
 		System.out.println(">>"+accountList);
-		accountList.add(3,new Account(3334, "KIMM", 40000, 0.9)); //  add(3, ~)3번째 인덱스에 추가
+		
+		accountList.add(2,new Account(3334, "KIMM", 40000, 0.9)); //  add(3, ~)3번째 인덱스에 추가
 		System.out.println(">>"+accountList);
 		System.out.println("# size:"+accountList.size());
+		
 		System.out.println("********************** 2.set **********************");
 		accountList.set(3, new Account(7777, "PAKA", 99770, 1.8)); // set(3, ~)3번째 인덱스 수정
 		System.out.println(">>"+accountList);
 		System.out.println("# size:"+accountList.size());
+		
 		System.out.println("********************** 3.get **********************");
-		Account getAccount=(Account)accountList.get(1); // get(1) 1번째 인덱스 반환 // 반환 시 Objcet 배열 List객체를 하위 캐스팅 해서 값 확인
+		Account getAccount=(Account)accountList.get(3); // get(1) 1번째 인덱스 반환 // 반환 시 Objcet 배열 List객체를 하위 캐스팅 해서 값 확인
 		getAccount.print();
 		getAccount=(Account)accountList.get(accountList.size()-1);
 		getAccount.print();
+		
 		System.out.println("********************** 4.remove **********************"); //remove(3) 3번째 인덱스 삭제
 		Account removeAccount = (Account)accountList.remove(3);
 		removeAccount.print(); // 삭제 된 값
@@ -105,6 +96,19 @@ public class ArrayListMain {
 			tempAccount.print();
 		}
 		
+		anyTypeArray[0]=acc1;
+		anyTypeArray[1]=acc2;
+		anyTypeArray[2]=acc3;
+		anyTypeArray[3]=acc4;
+		anyTypeArray[4]=acc5;
+		
+		
+		for (int i = 0; i < anyTypeArray.length; i++) {
+			Account tempAccount=(Account)anyTypeArray[i];
+			tempAccount.print();
+		}
+		
+
 		
 		
 		System.out.println("######################iteration[전체출력]######################");

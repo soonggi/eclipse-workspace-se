@@ -1,4 +1,4 @@
-package com.itwill04.array;
+package com.itwill04.array.student;
 
 import java.util.Iterator;
 
@@ -166,7 +166,18 @@ public class StudentArrayMain {
 		
 		
 		System.out.println(" 9.학생이름순으로 오름차순정렬");
-		
+		for (int i = 0; i < students.length-1; i++) {
+			for (int j = 0; j < students.length-1; j++) {
+				if(students[j].getName().compareTo(students[j+1].getName())>0) {
+					Student tempStudent = students[j+1];
+					students[j+1] = students[j];
+					students[j] = tempStudent;
+				}
+			}
+		}
+		for (int i = 0; i < students.length; i++) {
+			students[i].print();
+		}
 
 	
 }
