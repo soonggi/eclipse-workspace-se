@@ -1,6 +1,6 @@
 package generic;
 
-public class Account {
+public class Account implements Comparable<Account>{
 	/*
 	 * 멤버필드
 	 */
@@ -63,6 +63,10 @@ public class Account {
 		System.out.printf("%d %s %d %4.1f %n",this.no,this.owner,this.balance,this.iyul);
 	}
 	
+	public String toString() {
+		return "("+no+" "+owner+" "+balance+" "+iyul+")";
+	}
+	
 	
 	
 	/*
@@ -101,6 +105,24 @@ public class Account {
 		this.balance = balance;
 	}
 	
+	@Override
+	public int compareTo(Account nextAccount) {
+		
+		if(this.balance > nextAccount.getBalance()) {
+			return 1;
+		}else {
+			return -1;
+		}
+		
+		/*이름 오름차순
+		if(this.owner.compareTo(nextAccount.getOwner()) > 0) {
+			return 1;
+		}else {
+			return -1;
+		}
+		*/
+		
+	}
 	
 	
 	

@@ -59,13 +59,23 @@ public class CarServiceHashMap {
 	public ArrayList<Car> findByInTime(int inTime) {
 		ArrayList<Car> findCars = new ArrayList<Car>();
 		
+		Iterator<String> carNoIterator = carMap.keySet().iterator();
+		while (carNoIterator.hasNext()) {
+			String carNo = carNoIterator.next();
+			Car tempCar=carMap.get(carNo);
+			if(tempCar.getInTime()>=inTime) {
+				findCars.add(tempCar);
+			}
+			
+		}
+		/*
 		for (int i = 0; i < carMap.size(); i++) {
 			Car temp=findCars.get(i);
 			if(temp.getInTime()>inTime) {
 				temp.print();
 			}
 		}
-		
+		*/
 		
 		return findCars;
 	}
