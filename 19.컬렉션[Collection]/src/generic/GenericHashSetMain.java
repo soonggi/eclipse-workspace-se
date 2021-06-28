@@ -2,6 +2,7 @@ package generic;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 public class GenericHashSetMain {
 
@@ -44,7 +45,66 @@ public class GenericHashSetMain {
 			account.print();
 			
 		}
+		System.out.println("---------------String, Wrapper----------------");
+		System.out.println("<<<<<<<<<<<<<<<String>>>>>>>>>>>>>>>");
+		Set<String> nameSet=new HashSet<String>();
+		nameSet.add(new String("KIM"));
+		nameSet.add("JIM");
+		nameSet.add("SIM");
+		nameSet.add("DIM");
+		nameSet.add("FIM");
+		nameSet.add("VIM");
+		System.out.println("---------1. add--------");
+		System.out.println(nameSet);
+		nameSet.add("KIM"); // set은 중복돼서 안들어감
+		System.out.println(nameSet);
 	
+		System.out.println("---------2. remove--------");
+		nameSet.remove("KIM");
+		System.out.println(nameSet);
+		System.out.println("---------3. Iteration--------");
+		Iterator<String> nameIter = nameSet.iterator();
+		while (nameIter.hasNext()) {
+			String name = nameIter.next();
+			System.out.print(name+" ");
+			
+		}
+		
+		System.out.println();
+		
+		System.out.println("<<<<<<<<<<<<<<<Wrapper>>>>>>>>>>>>>>>");
+		Set<Integer> lottoSet = new HashSet<Integer>();
+		lottoSet.add(34);
+		lottoSet.add(12);
+		lottoSet.add(2);
+		lottoSet.add(41);
+		lottoSet.add(11);
+		System.out.println("------1.add-------");
+		System.out.println("#size: "+lottoSet.size());
+		System.out.println(lottoSet);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		isAdd = lottoSet.add(34);
+		System.out.println("isAdd:"+isAdd);
+		System.out.println("#size"+lottoSet.size());
+		System.out.println(lottoSet);
+		System.out.println("------2.remove-------");
+		isRemove=lottoSet.remove(new Integer(34));
+		System.out.println("isRemove:"+isRemove);
+		System.out.println("#size"+lottoSet.size());
+		System.out.println(lottoSet);
+		
+		Set<Integer> lotto = new HashSet<Integer>();
+		while (lotto.size() < 6) {
+			lotto.add((int)(Math.random()*45)+1);
+		}
+		System.out.println(">>lotto:"+lotto);
+		
 	}
 
 }

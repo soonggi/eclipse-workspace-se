@@ -1,3 +1,4 @@
+package nogeneric;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -5,8 +6,10 @@ import java.util.Set;
 public class HashMapMain {
 
 	public static void main(String[] args) {
+		
 		HashMap carMap = new HashMap();
 		System.out.println("map size: "+carMap.size());
+		
 		System.out.println("-----------1. put------------");
 		Car c1=new Car("1111", 12);
 		carMap.put("1111", c1);

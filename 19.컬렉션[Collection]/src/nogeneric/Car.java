@@ -1,3 +1,4 @@
+package nogeneric;
 /*
 	 * class 선언
 	 *  - 형식
