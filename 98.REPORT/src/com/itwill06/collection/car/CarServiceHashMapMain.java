@@ -31,11 +31,10 @@ public class CarServiceHashMapMain {
 		carService.ipCha(new Car("9090", 19));
 		System.out.println(
 				"5.CarService객체야 차량번호(4567번) 인자로줄께  차객체한대 참조변수반환해줘");
-		//Car findCar = carService.findByNo("4567");
-		//findCar.print();
+		Car findCar = carService.findByNo("4567");
+		findCar.print();
 		System.out.println(
 				"6.CarService객체야 입차시간(8시이후) 인자로줄께 차객체배열 참조변수반환해줘");
-		carService.findByInTime(8);
 		ArrayList<Car> findCars=carService.findByInTime(8);
 		
 		for (int i = 0; i < findCars.size(); i++) {

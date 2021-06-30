@@ -25,7 +25,7 @@ public class ArrayListMain {
 		accountList.add(acc5);
 		System.out.println("# size:"+accountList.size());
 		System.out.println(">>"+accountList);
-		
+		/*
 		accountList.add(2,new Account(3334, "KIMM", 40000, 0.9)); //  add(3, ~)3번째 인덱스에 추가
 		System.out.println(">>"+accountList);
 		System.out.println("# size:"+accountList.size());
@@ -41,12 +41,13 @@ public class ArrayListMain {
 		getAccount=(Account)accountList.get(accountList.size()-1);
 		getAccount.print();
 		
+		
 		System.out.println("********************** 4.remove **********************"); //remove(3) 3번째 인덱스 삭제
 		Account removeAccount = (Account)accountList.remove(3);
 		removeAccount.print(); // 삭제 된 값
 		System.out.println(accountList);
 		System.out.println("# size:"+accountList.size());
-		
+		*/
 		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%% 업무실행 %%%%%%%%%%%%%%%%%%%%%%%");
 		System.out.println("**********************1. 계좌전체출력 **********************"); // get() 활용하여 for문
@@ -90,7 +91,7 @@ public class ArrayListMain {
 			}
 			
 		}
-		
+		/*
 		System.out.println("**********************6. 계좌전체출력 **********************");
 		for (int i = 0; i < accountList.size(); i++) {
 			Account tempAccount=(Account)accountList.get(i);
@@ -104,13 +105,11 @@ public class ArrayListMain {
 		anyTypeArray[4]=acc5;
 		
 		
+		 */
 		for (int i = 0; i < anyTypeArray.length; i++) {
 			Account tempAccount=(Account)anyTypeArray[i];
 			tempAccount.print();
 		}
-		
-
-		
 		
 		System.out.println("######################iteration[전체출력]######################");
 		Iterator accountIerator = accountList.iterator();

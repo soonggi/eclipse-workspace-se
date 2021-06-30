@@ -1,5 +1,6 @@
 package com.itwill06.collection.car;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,12 +27,6 @@ public class CarServiceHashMap {
 	public boolean ipCha(Car inCar) {
 		boolean isSuccess = false;
 		
-		if(carMap.size()<count) {
-			carMap.put(null, inCar);
-		}else {
-			System.out.println("만차입니다."); 
-		}
-		
 		return isSuccess;
 	}
 
@@ -39,8 +34,6 @@ public class CarServiceHashMap {
 	 * 1. 전체차량출력
 	 */
 	public void print() {
-		
-		
 		
 	}
 
@@ -61,21 +54,12 @@ public class CarServiceHashMap {
 		
 		Iterator<String> carNoIterator = carMap.keySet().iterator();
 		while (carNoIterator.hasNext()) {
-			String carNo = carNoIterator.next();
+			String carNo =  carNoIterator.next();
 			Car tempCar=carMap.get(carNo);
 			if(tempCar.getInTime()>=inTime) {
 				findCars.add(tempCar);
 			}
-			
 		}
-		/*
-		for (int i = 0; i < carMap.size(); i++) {
-			Car temp=findCars.get(i);
-			if(temp.getInTime()>inTime) {
-				temp.print();
-			}
-		}
-		*/
 		
 		return findCars;
 	}
@@ -100,6 +84,6 @@ public class CarServiceHashMap {
 	 */
 	public int getAvailableParkingLotCount() {
 		return count-carMap.size();
-	} 
-	
+	}
+
 }
