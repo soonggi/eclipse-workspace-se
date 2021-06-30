@@ -4,13 +4,14 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 
-public class BufferedReaderWriterCopyMain {
+public class BufferedReaderPrintWriterCopyMain {
 
 	public static void main(String[] args) throws Exception {
 		
 		BufferedReader br = new BufferedReader(new FileReader("죄와벌.txt"));
-		BufferedWriter bw = new BufferedWriter(new FileWriter("죄와벌.LINENO.txt"));
+		PrintWriter pw = new PrintWriter(new FileWriter("죄와벌.LINENO.txt"));
 		/*
 		 * public String readLine() throws IOException
 			- Reads a line of text. 
@@ -38,14 +39,13 @@ public class BufferedReaderWriterCopyMain {
 				continue;
 			}
 			lineNo++;
-			bw.write(lineNo+":"+readLine);
-			bw.newLine();
+			pw.println(lineNo+":"+readLine);
 		}
 		br.close();
-		bw.flush();
-		bw.close();
-		System.out.println("----BufferedReaderWriter copy----");
-
+		pw.flush();
+		pw.close();
+		System.out.println("----BufferedReaderPrintWriter copy----");
+		
 	}
 
 }
