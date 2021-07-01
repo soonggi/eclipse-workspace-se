@@ -1,6 +1,8 @@
 package byte_stream.filter_stream;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable{
 	/*
 	 * 멤버필드
 	 */
