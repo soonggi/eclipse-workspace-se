@@ -108,6 +108,7 @@ public class FileMain {
 		System.out.println("newFile2 생성:"+newFile2.createNewFile());
 		System.out.println("newFile2 이름변경:"+newFile2.renameTo(new File("newDir1","renameNewFile2.txt")));
 		System.out.println("newFile1 삭제:"+newFile1.delete());
+		System.out.println("newFile1 삭제:"+newFile1.delete());
 		//System.out.println("newFile1 삭제:"+newFile1.deleteOnExit());
 		
 	}
