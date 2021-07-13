@@ -67,9 +67,9 @@ public class Account implements Comparable<Account>{
 		return "("+no+" "+owner+" "+balance+" "+iyul+")";
 	}
 	
-	
-	
 	/*
+	
+	
 	@Override
 	public String toString() {
 		return "("+no+" "+owner+" "+balance+" "+iyul+")";

@@ -9,15 +9,7 @@ public class CarService {
 	private Car[] carArray;
 	
 	public CarService() {
-		carArray=new Car[9];
-		carArray[0]=new Car("1111", 5);
-		carArray[1]=new Car("1234", 7);
-		carArray[2]=new Car("3333", 4);
-		carArray[3]=new Car("4444", 13);
-		carArray[4]=new Car("5555", 15);
-		carArray[5]=new Car("6666", 19);
-		carArray[6]=new Car("4567", 20);
-		carArray[7]=new Car("4567", 20);
+		carArray=new Car[30];
 	}
 	
 	public CarService(int count) {
@@ -30,6 +22,8 @@ public class CarService {
 	     - 주차장이 만차이면 입차실패
 	     - 차량번호중복체크
 	*/
+	
+	
 	
 	public static final int NOPASS1 = 1;
 	public static final int NOPASS2 = 2;
@@ -186,7 +180,7 @@ public class CarService {
 	public Car findByNo(String no) {
 		Car tempNo = null;
 		for (int i = 0; i < carArray.length; i++) {
-			if(carArray[i].getNo().equals(no)) {
+			if(carArray[i]!=null && carArray[i].getNo().equals(no)) {
 				tempNo=carArray[i];
 			}
 		}
@@ -201,7 +195,7 @@ public class CarService {
 		int count = 0;
 		
 		for (int i = 0; i < carArray.length; i++) {
-			if(carArray[i].getInTime()>=inTime) {
+			if(carArray[i]!=null && carArray[i].getInTime()>=inTime) {
 				count++;
 			}
 		}
@@ -209,7 +203,7 @@ public class CarService {
 		
 		
 		for (int i = 0, index = 0; i < carArray.length; i++) {
-			if(carArray[i].getInTime()>=inTime) {
+			if(carArray[i]!=null && carArray[i].getInTime()>=inTime) {
 				tempNo[index]=carArray[i];
 				index++;
 			}

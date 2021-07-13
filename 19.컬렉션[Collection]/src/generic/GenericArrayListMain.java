@@ -13,6 +13,7 @@ public class GenericArrayListMain {
 		Account acc5=new Account(5555, "RING", 99000, 9.9);
 		
 		ArrayList<Account>accountList = new ArrayList<Account>();
+		
 		System.out.println("#size : "+accountList.size());
 		System.out.println("-------------------1. add (추가)-------------------");
 		accountList.add(acc1);
