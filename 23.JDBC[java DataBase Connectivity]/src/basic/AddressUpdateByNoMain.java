@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class AddressInsertMain {
+public class AddressUpdateByNoMain {
 
 	public static void main(String[] args) throws Exception{
 		/*******************************************************/
@@ -13,25 +13,16 @@ public class AddressInsertMain {
 		String user = "javadeveloper28";
 		String password = "javadeveloper28";
 		/*******************************************************/
-		String insertSql = "insert into address values(address_no_seq.nextval,'guard','김경호','123-4568','경기도 성남시')"; 
-		/*
-		 1.Driver Class loading
-		 2.Connection객체생성(DBServer에연결)
-		 3.Statement객체생성(SQL 전송객체)
-		 4.Statement객체를 사용해 SQL문전송(DML)
-		 5.실행결과(Resultset,영향받은 행의수)
-		 */
-		
+		String updateSql = "update address set id='xxx',name='김경호',phone='899-9999',address='서울시 강남구' where no = 4"; 
+				
 		
 		Class.forName(driverClass);
 		Connection con = DriverManager.getConnection(url,user,password);
 		Statement stmt = con.createStatement();
-		/*
-		 * 4. Statement 객체를 사용해 SQL문 전송(DML)
-		 */
 		
-		int insertRowCount = stmt.executeUpdate(insertSql);
-		System.out.println(">> " + insertRowCount + " 행 insert");
+		int updateRowCount = stmt.executeUpdate(updateSql);
+		System.out.println(">> " + updateRowCount + " 행 update");
+
 
 	}
 
