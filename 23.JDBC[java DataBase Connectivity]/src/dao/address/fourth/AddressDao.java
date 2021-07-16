@@ -17,272 +17,123 @@ Dao(Data Access Object)
    수행하는 객체
  */
 public class AddressDao {
-	
-	public Address selectByNo(int no) throws Exception{
-		/*************************DB접속정보***************************/
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		/*******************************************************/
-		Address findAddress=null;
-		String selectSql = "select no,id,name,phone,address from address where no = ?"; 
-					
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
+	private DataSource dataSource;
+
+	public AddressDao() {
+		this.dataSource = new DataSource();
+	}
+
+	public Address selectByNo(int no) throws Exception {
+
+		Address findAddress = null;
+		String selectSql = "select no,id,name,phone,address from address where no = ?";
+
+		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(selectSql);
 		pstmt.setInt(1, no);
-		
-		ResultSet rs=pstmt.executeQuery();
-		
-		
+
+		ResultSet rs = pstmt.executeQuery();
+
 		while (rs.next()) {
-			
-			int n=rs.getInt("no");
-			String id=rs.getString("id");
-			String name=rs.getString("name");
-			String phone=rs.getString("phone");
-			String address=rs.getString("address");
-			findAddress=new Address(n, id, name, phone, address);
-			//System.out.println(no+"\t"+id+"\t"+name+"\t"+phone+"\t"+address);
-			
+
+			int n = rs.getInt("no");
+			String id = rs.getString("id");
+			String name = rs.getString("name");
+			String phone = rs.getString("phone");
+			String address = rs.getString("address");
+			findAddress = new Address(n, id, name, phone, address);
 		}
-		
+
 		rs.close();
 		pstmt.close();
-		con.close();
+
+		dataSource.releaseConnection(con);
 		return findAddress;
 	}
-	
-	public ArrayList<Address> selectAll() throws Exception{
-		/*************************DB접속정보***************************/
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		/*******************************************************/
+
+	public ArrayList<Address> selectAll() throws Exception {
+
 		ArrayList<Address> addressList = new ArrayList<Address>();
-		
-		String selectSql = "select no,id,name,phone,address from address"; 
-					
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
+
+		String selectSql = "select no,id,name,phone,address from address";
+
+		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(selectSql);
-		
-		ResultSet rs=pstmt.executeQuery();
-		
-		
+
+		ResultSet rs = pstmt.executeQuery();
+
 		while (rs.next()) {
-			
-			int no=rs.getInt("no");
-			String id=rs.getString("id");
-			String name=rs.getString("name");
-			String phone=rs.getString("phone");
-			String address=rs.getString("address");
-			//System.out.println(no+"\t"+id+"\t"+name+"\t"+phone+"\t"+address);
-			
+
+			int no = rs.getInt("no");
+			String id = rs.getString("id");
+			String name = rs.getString("name");
+			String phone = rs.getString("phone");
+			String address = rs.getString("address");
+
 			Address tempAddress = new Address(no, id, name, phone, address);
 			addressList.add(tempAddress);
 		}
-		
+
 		rs.close();
 		pstmt.close();
-		con.close();
+		dataSource.releaseConnection(con);
 		return addressList;
 	}
-	
-	public int insert(Address address) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		
+
+	public int insert(Address address) throws Exception {
+
+		Connection con = dataSource.getConnection();
+
 		String insertSql = "insert into address values(?,?,?,?,?)";
 		PreparedStatement pstmt = con.prepareStatement(insertSql);
-		
+
 		pstmt.setInt(1, address.getNo());
 		pstmt.setString(2, address.getId());
 		pstmt.setString(3, address.getName());
 		pstmt.setString(4, address.getPhone());
 		pstmt.setString(5, address.getAddress());
-		
+
 		int insertRowCount = pstmt.executeUpdate();
-		System.out.println(insertRowCount+"행 insert");
+		
 		pstmt.close();
-		con.close();
+		dataSource.releaseConnection(con);
 		return insertRowCount;
 	}
-	
-	public int deleteByNo(int no) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
+
+	public int deleteByNo(int no) throws Exception {
+
 		String deleteSql = "delete from address where no=?";
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url, user, password);
+
+		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(deleteSql);
 		pstmt.setInt(1, no);
+
+		int deleteRowCount = pstmt.executeUpdate();
 		
-		int deleteRowCount=pstmt.executeUpdate();
-		System.out.println(">>" + deleteRowCount + " 행 delete");
 		pstmt.close();
-		con.close();
+		dataSource.releaseConnection(con);
 		return deleteRowCount;
 	}
-	
-	public int updateByNo(Address address) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
+
+	public int updateByNo(Address address) throws Exception {
+
 		String updateSql = "update address set id=?, name=?, phone=?, address=? where no=?";
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url, user, password);
+
+		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(updateSql);
-		
+
 		pstmt.setString(1, address.getId());
 		pstmt.setString(2, address.getName());
 		pstmt.setString(3, address.getPhone());
 		pstmt.setString(4, address.getAddress());
 		pstmt.setInt(5, address.getNo());
-		
+
 		int updateRowCount = pstmt.executeUpdate();
-		System.out.println(">> "+updateRowCount+"update");
+		
 		pstmt.close();
-		con.close();
+		dataSource.releaseConnection(con);
 		return updateRowCount;
-		
-		
-	}
-	
-	
-	
-	/*
-	public void insert(Address address) throws Exception{
-		
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
-		String insertSql = "insert into address values(address_no_seq.nextval,'"+ 
-					address.getId() +"','"+ 
-					address.getName() +"','"+
-					address.getPhone()+"','"+
-					address.getAddress()+"')"; 
-		
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		Statement stmt = con.createStatement();
-				
-		int insertRowCount = stmt.executeUpdate(insertSql);
-		System.out.println(">> " + insertRowCount + " 행 insert");
-		
-		stmt.close();
-		con.close();
+
 	}
 
-	
-	public void insert(String id, String name, String phone, String address) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
-		String insertSql = "insert into address values(address_no_seq.nextval,'"+ id +"','"+ name +"','"+phone+"','"+address+"')"; 
-		
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		Statement stmt = con.createStatement();
-				
-		int insertRowCount = stmt.executeUpdate(insertSql);
-		System.out.println(">> " + insertRowCount + " 행 insert");
-		
-		stmt.close();
-		con.close();
-	}
-	 */
-	
-	
-	/*
-	public void deleteByNo(int no) throws Exception{
-		
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
-		String deleteSql = "delete from address where no="+no; 
-				
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		Statement stmt = con.createStatement();
-		
-		int deleteRowCount = stmt.executeUpdate(deleteSql);
-		System.out.println(">> " + deleteRowCount + " 행 delete");
-		
-		stmt.close();
-		con.close();
-	}
-	*/
-	/*
-	public void updateByNo(Address updateAddress) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		String updateSql = "update address set id='"+
-					updateAddress.getId()+"',name='"+
-					updateAddress.getName()+"',phone='"+
-					updateAddress.getPhone()+"',address='"+
-					updateAddress.getAddress()+"' where no = "+
-					updateAddress.getNo(); 
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		Statement stmt = con.createStatement();
-		
-		int updateRowCount = stmt.executeUpdate(updateSql);
-		System.out.println(">> " + updateRowCount + " 행 update");
-		System.out.println(">> " +updateSql);
-
-		stmt.close();
-		con.close();
-		
-	}
-	 */
-	
-	/*
-	public void updateByNo(int no, String id, String name, String phone, String address) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		String updateSql = "update address set id='"+id+"',name='"+name+"',phone='"+phone+"',address='"+address+"' where no = "+no; 
-				
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		Statement stmt = con.createStatement();
-		
-		int updateRowCount = stmt.executeUpdate(updateSql);
-		System.out.println(">> " + updateRowCount + " 행 update");
-		System.out.println(">> " +updateSql);
-
-		stmt.close();
-		con.close();
-	}
-	*/
-	
-	
 }
