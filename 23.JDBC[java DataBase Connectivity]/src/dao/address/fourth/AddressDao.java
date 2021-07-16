@@ -84,14 +84,13 @@ public class AddressDao {
 
 		Connection con = dataSource.getConnection();
 
-		String insertSql = "insert into address values(?,?,?,?,?)";
+		String insertSql = "insert into address values(address_no_seq.nextval,?,?,?,?)";
 		PreparedStatement pstmt = con.prepareStatement(insertSql);
 
-		pstmt.setInt(1, address.getNo());
-		pstmt.setString(2, address.getId());
-		pstmt.setString(3, address.getName());
-		pstmt.setString(4, address.getPhone());
-		pstmt.setString(5, address.getAddress());
+		pstmt.setString(1, address.getId());
+		pstmt.setString(2, address.getName());
+		pstmt.setString(3, address.getPhone());
+		pstmt.setString(4, address.getAddress());
 
 		int insertRowCount = pstmt.executeUpdate();
 		
