@@ -1,6 +1,6 @@
 package dao.address.second;
 
-public class AddressDao2Main {
+public class AddressDao2TestMain {
 
 	public static void main(String[] args) throws Exception{
 		AddressDao2 addressDao2 = new AddressDao2();

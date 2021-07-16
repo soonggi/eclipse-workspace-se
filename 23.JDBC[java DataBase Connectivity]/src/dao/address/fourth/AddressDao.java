@@ -1,4 +1,4 @@
-package dao.address.third;
+package dao.address.fourth;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,78 +16,7 @@ Dao(Data Access Object)
    Data Access(DB)에 관련된 단위기능(CRUD)을
    수행하는 객체
  */
-public class AddressDao3 {
-	
-	public int insert(Address address) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url,user,password);
-		
-		String insertSql = "insert into address values(?,?,?,?,?)";
-		PreparedStatement pstmt = con.prepareStatement(insertSql);
-		
-		pstmt.setInt(1, address.getNo());
-		pstmt.setString(2, address.getId());
-		pstmt.setString(3, address.getName());
-		pstmt.setString(4, address.getPhone());
-		pstmt.setString(5, address.getAddress());
-		
-		int insertRowCount = pstmt.executeUpdate();
-		System.out.println(insertRowCount+"행 insert");
-		pstmt.close();
-		con.close();
-		return insertRowCount;
-	}
-	
-	public int deleteByNo(int no) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		
-		String deleteSql = "delete from address where no=?";
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url, user, password);
-		PreparedStatement pstmt = con.prepareStatement(deleteSql);
-		pstmt.setInt(1, no);
-		
-		int deleteRowCount=pstmt.executeUpdate();
-		System.out.println(">>" + deleteRowCount + " 행 delete");
-		pstmt.close();
-		con.close();
-		return deleteRowCount;
-	}
-	
-	public int updateByNo(Address address) throws Exception{
-		String driverClass= "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
-		String user = "javadeveloper28";
-		String password = "javadeveloper28";
-		String updateSql = "update address set id=?, name=?, phone=?, address=? where no=?";
-		
-		Class.forName(driverClass);
-		Connection con = DriverManager.getConnection(url, user, password);
-		PreparedStatement pstmt = con.prepareStatement(updateSql);
-		
-		pstmt.setString(1, address.getId());
-		pstmt.setString(2, address.getName());
-		pstmt.setString(3, address.getPhone());
-		pstmt.setString(4, address.getAddress());
-		pstmt.setInt(5, address.getNo());
-		
-		int updateRowCount = pstmt.executeUpdate();
-		System.out.println(">> "+updateRowCount+"update");
-		pstmt.close();
-		con.close();
-		return updateRowCount;
-		
-		
-	}
+public class AddressDao {
 	
 	public Address selectByNo(int no) throws Exception{
 		/*************************DB접속정보***************************/
@@ -161,6 +90,79 @@ public class AddressDao3 {
 		con.close();
 		return addressList;
 	}
+	
+	public int insert(Address address) throws Exception{
+		String driverClass= "oracle.jdbc.OracleDriver";
+		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
+		String user = "javadeveloper28";
+		String password = "javadeveloper28";
+		
+		Class.forName(driverClass);
+		Connection con = DriverManager.getConnection(url,user,password);
+		
+		String insertSql = "insert into address values(?,?,?,?,?)";
+		PreparedStatement pstmt = con.prepareStatement(insertSql);
+		
+		pstmt.setInt(1, address.getNo());
+		pstmt.setString(2, address.getId());
+		pstmt.setString(3, address.getName());
+		pstmt.setString(4, address.getPhone());
+		pstmt.setString(5, address.getAddress());
+		
+		int insertRowCount = pstmt.executeUpdate();
+		System.out.println(insertRowCount+"행 insert");
+		pstmt.close();
+		con.close();
+		return insertRowCount;
+	}
+	
+	public int deleteByNo(int no) throws Exception{
+		String driverClass= "oracle.jdbc.OracleDriver";
+		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
+		String user = "javadeveloper28";
+		String password = "javadeveloper28";
+		
+		String deleteSql = "delete from address where no=?";
+		
+		Class.forName(driverClass);
+		Connection con = DriverManager.getConnection(url, user, password);
+		PreparedStatement pstmt = con.prepareStatement(deleteSql);
+		pstmt.setInt(1, no);
+		
+		int deleteRowCount=pstmt.executeUpdate();
+		System.out.println(">>" + deleteRowCount + " 행 delete");
+		pstmt.close();
+		con.close();
+		return deleteRowCount;
+	}
+	
+	public int updateByNo(Address address) throws Exception{
+		String driverClass= "oracle.jdbc.OracleDriver";
+		String url = "jdbc:oracle:thin:@182.237.126.19:1521:xe";
+		String user = "javadeveloper28";
+		String password = "javadeveloper28";
+		String updateSql = "update address set id=?, name=?, phone=?, address=? where no=?";
+		
+		Class.forName(driverClass);
+		Connection con = DriverManager.getConnection(url, user, password);
+		PreparedStatement pstmt = con.prepareStatement(updateSql);
+		
+		pstmt.setString(1, address.getId());
+		pstmt.setString(2, address.getName());
+		pstmt.setString(3, address.getPhone());
+		pstmt.setString(4, address.getAddress());
+		pstmt.setInt(5, address.getNo());
+		
+		int updateRowCount = pstmt.executeUpdate();
+		System.out.println(">> "+updateRowCount+"update");
+		pstmt.close();
+		con.close();
+		return updateRowCount;
+		
+		
+	}
+	
+	
 	
 	/*
 	public void insert(Address address) throws Exception{
